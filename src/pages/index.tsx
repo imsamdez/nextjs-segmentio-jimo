@@ -1,10 +1,21 @@
 import { AnalyticsBrowser } from "@segment/analytics-next";
 
-const analytics = AnalyticsBrowser.load({
-  writeKey: process.env.NEXT_PUBLIC_SEGMENT_KEY as string,
-  cdnURL: "https://proxy-segment.vercel.app/api/segment",
-  // cdnURL: "http://localhost:3006/api/segment",
-});
+const analytics = AnalyticsBrowser.load(
+  {
+    writeKey: process.env.NEXT_PUBLIC_SEGMENT_KEY as string,
+    cdnURL: "https://proxy-segment.vercel.app/api/segment",
+    // cdnURL: "http://localhost:3006/api/segment",
+  },
+  {
+    integrations: {
+      "Segment.io": {
+        apiHost: "proxy-segment.vercel.app/api/segment-api",
+        // protocol: "http",
+        // apiHost: "localhost:3006/api/segment-api",
+      },
+    },
+  }
+);
 
 export default function Home() {
   return (
