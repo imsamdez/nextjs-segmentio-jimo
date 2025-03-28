@@ -2,6 +2,8 @@ import { AnalyticsBrowser } from "@segment/analytics-next";
 
 const analytics = AnalyticsBrowser.load({
   writeKey: process.env.NEXT_PUBLIC_SEGMENT_KEY as string,
+  cdnURL: "https://proxy-segment.vercel.app/api/segment",
+  // cdnURL: "http://localhost:3006/api/segment",
 });
 
 export default function Home() {
