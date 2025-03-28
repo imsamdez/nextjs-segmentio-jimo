@@ -1,7 +1,7 @@
 import { AnalyticsBrowser } from "@segment/analytics-next";
 
 const analytics = AnalyticsBrowser.load({
-  writeKey: "", // change this to your own write key
+  writeKey: process.env.NEXT_PUBLIC_SEGMENT_KEY as string,
 });
 
 export default function Home() {
